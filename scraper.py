@@ -1,18 +1,3 @@
-#!/usr/bin/env python3
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 import argparse
 import getpass
 import re
@@ -38,7 +23,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-
 def logprint(text):
     text = f"[cyan][+][/cyan] [blue]{text}[/blue]"
     console.print(text)
@@ -49,36 +33,6 @@ def errorprint(text):
     
 
 console = Console()
-
-
-def print_banner():
-    credits = "[blue][italic]by n0kovo[/italic][/blue]"
-    version = "[blue][italic]v0.3.6[/italic][/blue]"
-    lol = "[grey30](banners are cool, shut up)[/grey30]"
-    banner = f"""    ______    ____     _                _____      __                                      
-   / __/ /_  / __/____(_)__  ____  ____/ / (_)____/ /____________________  ____  ___  _____
-  / /_/ __ \/ /_/ ___/ / _ \/ __ \/ __  / / / ___/ __/ ___/ ___/ ___/ __ `/ __ \/ _ \/ ___/
- / __/ /_/ / __/ /  / /  __/ / / / /_/ / / (__  ) /_(__  ) /__/ /  / /_/ / /_/ /  __/ /    
-/_/ /_.___/_/ /_/  /_/\___/_/ /_/\__,_/_/_/____/\__/____/\___/_/   \__,_/ .___/\___/_/      
-{lol}                                     {version} /_/ {credits}                 
-
-"""
-    for i, line in enumerate(banner.splitlines()):
-        if i == 0:
-            line = line.replace("_", "[white]_[/white]")
-        if i == 1:
-            line = line.replace("/_", "/[white]_[/white]")
-            line = line.replace("__", "[white]__[/white]")
-            line = line.replace("_ ", "[white]_ [/white]")
-            line = line.replace("_", "[white]_[/white]")
-        
-        if i in [0, 1, 4, 5]:
-            console.print(line, style="red", highlight=False)
-        elif i == 3:
-            console.print(line, style="cyan", highlight=False)
-        else:
-            console.print(line, style="blue", highlight=False)
-
 
 
 def parse_proxy(proxy_string):
@@ -322,8 +276,6 @@ def do_scrape(driver, email, password, user_to_scrape, outfile_path, args):
 
 
 def main():
-    print_banner()
-    
     parser = argparse.ArgumentParser(
         prog='fbfriendlistscraper',
         description='Tool to scrape names and usernames from large friend lists on Facebook, without being rate limited',
